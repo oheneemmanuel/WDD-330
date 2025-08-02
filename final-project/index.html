@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Soccer Scope | Home Page </title>
+    <meta name="description" content="A Home page for the Soccer Scope website that displays the necessary information that will be needed by the user.">
+    <meta name="author" content="Ohene Emmanuel Kwakye">
+    <meta property="og:title" content="Soccer Scope ">
+    <meta property="og:description" content="A home page for the soccer scope ">
+    <meta property="og:image" content="https://oheneemmanuel.github.io/wdd231/final-project/images/charger.webp">
+    <meta property="og:url" content="https://oheneemmanuel.github.io/wdd231/final-project/index.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Soccer Scope">
+    <meta property="og:locale" content="en_US">
+    <link rel="icon" href="icon1.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="styles/soccer.css">
+    <link rel="stylesheet" href="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth@0,99.7;1,99.7&display=swap" rel="stylesheet">
+    <script type="module" src="scripts/main.js"></script>
+    
+</head>
+<body>
+    <header>
+        <img src="image/soccer.webp" alt="logo of soccer scope">
+        <span>SOCCER SCOPE</span>
+        <button id="open-menu"></button>
+        <nav id="menu-options">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+     
+   </header>
+   
+   
+  
+    <main>
+        <div class="loader"></div>
+
+        <div id="details"></div>
+        <label for="league-select">Select a League:</label>    
+        <select id="league-select">
+            <option value="39">Premier League (England)</option>
+            <option value="140">La Liga(Spain)</option>
+            <option value="135">Serie A(Italy)</option>
+            <option value="78">Bundesliga(Germany)</option>
+            <option value="61">Ligue 1(France)</option>
+            <option value="88">Eredivisie(Netherlands)</option>
+            <option value="62"> MLS(USA)</option>
+            <option value="2"> UEFA Champions League</option>
+            <option value="3"> UEFA Europa League</option>
+            <option value="4"> UEFA Conference League</option>
+            <option value="263"> Suadi Pro League</option>
+        </select>
+
+        <section class="team-info">
+
+        </section>  
+        <section class="players-info">
+            <h2>Players</h2>
+        </section>
+            
+       
+
+       
+        
+    </main>
+
+    <footer>
+        <div>
+            <p>WDD330 final Project</p>
+            <p>Ohene Kwakye Emmanuel</p>
+        
+            <p>&copy;<span id="currentyear"></span> Ohene Emmanuel Kwakye, Ghana All rights reserved.</p>
+            <p id="LastModified"></p>
+        </div>
+    
+        
+    </footer>
+        
+    
+</body>
+</html>
