@@ -29,8 +29,8 @@ export function displayLeagues(leaguesArray) {
         logo.alt = `${item.league.name} logo`;
         logo.classList.add("league-img");
 
-        logo.width = 400;
-        logo.height = 200;
+        logo.width = 900;
+        logo.height = 500;
         logo.loading = "lazy";
 
         const leagueName = document.createElement("span");

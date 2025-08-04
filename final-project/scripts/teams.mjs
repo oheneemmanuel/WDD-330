@@ -35,12 +35,14 @@ function displayTeams(teams, leagueName = "") {
     container.innerHTML = "";
 
     const heading = document.createElement("h2");
-    heading.textContent = `Teams in ${leagueName}`;
+    heading.textContent = `Teams in ${leagueName} - ${teams.length}`;
     container.appendChild(heading);
 
     teams.forEach(({team, venue}) => {
       const div = document.createElement("div");
       div.classList.add("team-card");
+      const teamName = document.createElement("h2");
+      teamName.textContent = team.name;
 
       const logo = document.createElement("img");
       logo.src = team.logo;
