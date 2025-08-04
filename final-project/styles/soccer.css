@@ -1,27 +1,39 @@
-header {
-    border: 1px solid black;
-    display: flex;
-    justify-content: space-between;
-    
-    span {
-        font-size: 2rem;
-        font-weight: bold;
-        color: navy;
-        margin-left: 1rem;
-        text-align: center;
-        margin-top: 1rem;
-    }
-
-    img {
-        width: 80px;
-        height: 80px;
-        margin-left: 1rem;
-    }
+/* ========================
+   Global Reset & Defaults
+=========================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
+/* ========================
+   Header Section
+=========================== */
+header {
+  border: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background-color: #f8f9fa;
+}
 
+header span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: navy;
+  text-align: center;
+}
 
+header img {
+  width: 80px;
+  height: 80px;
+}
 
+/* ========================
+   Loader Spinner
+=========================== */
 .loader {
   border: 5px solid #ccc;
   border-top: 5px solid #2e8b57;
@@ -38,66 +50,77 @@ header {
   }
 }
 
-
-  
+/* ========================
+   Navigation Menu (Mobile)
+=========================== */
 #open-menu {
-    position: absolute;
-    top: 2rem;
-    left: 25rem;
-    width: 40px;
-    height: 40px;
-    background-color: transparent;
-    border: none;
-    font-size: 1.5rem;
+  position: absolute;
+  top: 2rem;
+  left: 25rem;
+  width: 40px;
+  height: 40px;
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
+
 #open-menu::before {
-    content: "☰";
-    
-    cursor: pointer;
+  content: "☰";
 }
+
 #open-menu.open::before {
-    content: "✖";
+  content: "✖";
 }
+
 #menu-options {
-    display: grid;
-    grid-template-rows: 0fr;
-    transition: grid-template-rows right 0.9s ease-in-out;
-
-    ul {
-        overflow: hidden;
-        list-style: none;
-        padding: 0;
-        margin: 0;
-    }
-    ul a {
-        text-decoration: none;
-        color: black;
-        background-color: navy;
-        display: block;
-        padding: 1rem;
-    }
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.9s ease-in-out;
+  overflow: hidden;
 }
+
+#menu-options ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#menu-options ul a {
+  text-decoration: none;
+  color: black;
+  background-color: navy;
+  display: block;
+  padding: 1rem;
+}
+
 #menu-options.open {
-    grid-template-rows: 1fr;
-    justify-content: right;
-    max-height: 500px;
-    right: 0;
-
-    ul a {
-        text-decoration: none;
-        padding: .5rem 2vw;
-        color: white;
-        border: 1px solid black;
-        margin: 1rem;
-    }
+  grid-template-rows: 1fr;
+  justify-content: right;
+  max-height: 500px;
+  right: 0;
 }
 
+#menu-options.open ul a {
+  color: white;
+  padding: 0.5rem 2vw;
+  border: 1px solid black;
+  margin: 1rem;
+}
+
+/* ========================
+   Team Cards Grid Layout
+=========================== */
 .team-info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.5rem;
   padding: 1rem;
 }
+
+/* ========================
+   Individual Team Card
+=========================== */
 .team-card {
   background-color: #fff;
   border-radius: 12px;
@@ -107,9 +130,11 @@ header {
   position: relative;
   transition: transform 0.2s ease;
 }
+
 .team-card:hover {
   transform: scale(1.02);
 }
+
 .view-players {
   background-color: #007bff;
   color: white;
@@ -120,9 +145,14 @@ header {
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
+
 .view-players:hover {
   background-color: #0056b3;
 }
+
+/* ========================
+   Team Details (on click)
+=========================== */
 .team-details {
   margin-top: 1rem;
   background-color: #f4f4f4;
@@ -131,10 +161,12 @@ header {
   text-align: left;
   animation: fadeIn 0.3s ease-in-out;
 }
+
 .team-details img {
   border-radius: 10px;
   margin-top: 0.5rem;
 }
+
 .close-details {
   display: inline-block;
   margin-top: 1rem;
@@ -146,9 +178,9 @@ header {
   cursor: pointer;
 }
 
-
-
-
+/* ========================
+   Players Table
+=========================== */
 .players-table {
   width: 100%;
   border-collapse: collapse;
@@ -166,17 +198,54 @@ header {
   border-radius: 50%;
 }
 
+/* ========================
+   League Slider Section
+=========================== */
+#leagueDisplay {
+  display: flex;
+  overflow-x: auto;
+  gap: 1rem;
+  padding: 1rem;
+  scroll-behavior: smooth;
+}
 
+.slider-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #fff;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 0 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  min-width: 220px;
+  max-width: 240px;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
 
+.slider-item:hover {
+  transform: scale(1.05);
+}
 
+.league-img {
+  width: 100%;
+  height: auto;
+  max-height: 120px;
+  object-fit: contain;
+  margin-bottom: 0.8rem;
+}
 
-
+/* ========================
+   Footer Styles
+=========================== */
 footer {
-    display: flex;
-    padding: 1rem;
-    flex-direction: column;
-    gap: 2rem;
-    background-color: green;
-    color: white;
-    margin-top: 1rem;
-}  
+  display: flex;
+  padding: 1rem;
+  flex-direction: column;
+  gap: 2rem;
+  background-color: green;
+  color: white;
+  margin-top: 1rem;
+  text-align: center;
+}

@@ -58,7 +58,9 @@ export async function fetchPlayersByTeam(teamId) {
     }
 
     const data = await response.json();
+
     return data.response.slice(0, 12); // This contains the players
+    console.log(data);
   } catch (error) {
     console.error("Error fetching players:", error);
     return []; // fallback in case of error

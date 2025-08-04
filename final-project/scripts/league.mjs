@@ -49,6 +49,7 @@ export async function getTopLeagues() {
         const response = await fetch(url, options);
         if (response.ok) {
             const data = await response.json();
+            console.log(data);
             const filtered = data.response.filter(item =>
                 topLeagues.includes(item.league.id)
             );

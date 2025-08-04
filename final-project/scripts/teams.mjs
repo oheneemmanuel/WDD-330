@@ -119,6 +119,7 @@ export async function getTeamsByLeague(leagueId) {
       const teams = data.response;
 
       displayTeams(teams, leagueMap[leagueId]);
+      console.log(data);
 
     } else {
       throw new Error(await response.text());
