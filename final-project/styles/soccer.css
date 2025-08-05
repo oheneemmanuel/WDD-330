@@ -206,22 +206,18 @@ h1 {
 /* ========================
    Players Table
 =========================== */
+
+.players-table-container {
+
+  overflow-x: auto;
+}
+
 .players-table {
   width: 100%;
+  min-width: 600px; /* Prevents columns from shrinking too much */
   border-collapse: collapse;
-  margin-top: 1rem;
 }
 
-.players-table th,
-.players-table td {
-  border: 1px solid #ccc;
-  padding: 8px;
-  text-align: center;
-}
-
-.players-table img {
-  border-radius: 50%;
-}
 
 /* ========================
    League Slider Section

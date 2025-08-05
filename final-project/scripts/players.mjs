@@ -20,7 +20,7 @@ export function getPlayersByTeam(players) {
       </tr>
     </thead>
     <tbody>
-      ${players.slice(0, 12).map(p =>`
+      ${players.slice(0, 19).map(p =>`
         <tr>
           <td><img src="${p.player.photo}" width="40" height="40" loading="lazy"></img></td>
           <td>${p.player.name}</td>

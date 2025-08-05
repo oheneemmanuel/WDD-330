@@ -56,8 +56,8 @@ function displayTeams(teams, leagueName = "") {
       viewBtn.classList.add("view-players");// for styling 
 
       viewBtn.addEventListener("click", async () => {
-        const players = await fetchPlayersByTeam(team.id);
-        getPlayersByTeam(players);
+        window.location.href = `players.html?teamId=${team.id}`;
+      
       });
 
       logo.addEventListener("click", async () => {
