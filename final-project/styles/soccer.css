@@ -60,72 +60,137 @@ h1 {
 /* ========================
    Navigation Menu (Mobile)
 =========================== */
-#open-menu {
 
-  font-size: 2rem;
-  background: none;
-  color: black;
-  cursor: pointer;
+
+/* ===== Header ===== */
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #2e8b57;
+  color: white;
   padding: 0.5rem 1rem;
+}
+
+header img {
+  height: 50px;
+  width: auto;
+}
+
+header span {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+/* ===== Menu Toggle Button ===== */
+#open-menu {
+  width: 30px;
+  height: 30px;
   border: none;
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+}
+
+#open-menu::before,
+#open-menu::after,
+#open-menu span {
+  content: "";
   position: absolute;
-  top: 1rem;
-  right: 1rem;
-  z-index: 3000;
-  
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: white;
+  transition: 0.3s;
 }
 
 #open-menu::before {
-  content: "☰";
+  top: 5px;
+}
+
+#open-menu::after {
+  bottom: 5px;
 }
 
 #open-menu.open::before {
-  content: "✖";
+  transform: rotate(45deg);
+  top: 13px;
 }
 
-#menu-options,
-#menu-options.open {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 200px;
-  background-color: navy;
-  z-index: 999;
-  display: grid;
-  grid-template-rows: 0fr;
-  transition: grid-template-rows 0.9s ease-in-out;
+#open-menu.open::after {
+  transform: rotate(-45deg);
+  bottom: 13px;
+}
+
+/* ===== Navigation ===== */
+nav {
+  background-color: #1f5c3c;
   overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.3s ease-in-out;
 }
 
-#menu-options ul {
+nav.open {
+  max-height: 200px; /* enough to show all links */
+}
+
+nav ul {
   list-style: none;
-  padding: 0;
   margin: 0;
-  display: flex;
-  flex: column;
-  gap: 1rem;
+  padding: 0;
 }
 
-#menu-options ul a {
-  text-decoration: none;
-  color: white;
-  background-color: navy;
+nav ul li {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+nav ul li a {
   display: block;
-  transition: background-color 0.3s ease;
-  padding: 1rem;
-}
-
-#menu-options.open {
-  grid-template-rows: 1fr;
-  max-height: 500px;
-}
-
-#menu-options.open ul a {
+  padding: 0.8rem 1rem;
   color: white;
-  padding: 0.5rem 2vw;
-  border: 1px solid black;
-  margin: 1rem;
+  text-decoration: none;
+  transition: 0.3s ease-in-out;
 }
+
+nav ul li a:hover,
+nav ul li.active-item a {
+  background-color: #3fa76b;
+}
+
+/* ===== Desktop View ===== */
+@media (min-width: 768px) {
+  #open-menu {
+    display: none;
+  }
+
+  nav {
+    max-height: none;
+    background: none;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 1rem;
+  }
+
+  nav ul li {
+    border: none;
+  }
+
+  nav ul li a {
+    padding: 0.5rem 0.8rem;
+    border-radius: 5px;
+  }
+
+  nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+
+
+
+
 
 /* ========================
    Team Cards Grid Layout
@@ -207,16 +272,49 @@ h1 {
    Players Table
 =========================== */
 
+/* Scrollable wrapper for small screens */
 .players-table-container {
-
   overflow-x: auto;
+  width: 100%;
+  margin-top: 1rem;
 }
 
+/* Table styles */
 .players-table {
   width: 100%;
-  min-width: 600px; /* Prevents columns from shrinking too much */
+  min-width: 600px; /* Ensures columns stay readable on small screens */
   border-collapse: collapse;
+  font-size: 0.9rem; /* Slightly smaller text for tighter fit */
 }
+
+/* Table headers and cells */
+.players-table th,
+.players-table td {
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  text-align: center;
+  white-space: nowrap; /* Prevent text from wrapping awkwardly */
+}
+
+/* Table header background */
+.players-table th {
+  background-color: var(--primary-color, #002b5b);
+  color: #fff;
+}
+
+/* Zebra striping for better readability */
+.players-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+/* Player image */
+.players-table img {
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+}
+
 
 
 /* ========================
@@ -259,6 +357,206 @@ h1 {
   object-fit: contain;
   margin-bottom: 0.8rem;
 }
+/* ========================
+   Form Elements Styling
+=========================== */
+
+/* Search input & dropdown alignment */
+#team-search,
+#league-search,
+#league-select {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  width: 100%;
+  max-width: 320px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Focus effect */
+#team-search:focus,
+#league-search:focus,
+#league-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+/* Search button styling */
+#search-btn,
+button[onclick="handleLeagueSearch()"] {
+  padding: 0.6rem 1.2rem;
+  margin-left: 0.5rem;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#search-btn:hover,
+button[onclick="handleLeagueSearch()"]:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Dropdown styling */
+#league-select {
+  background-color: #fff;
+  cursor: pointer;
+}
+
+#league-select option {
+  padding: 0.5rem;
+}
+
+/* Make form controls responsive & centered */
+main > input,
+main > button,
+main > select {
+  display: block;
+  margin: 0.5rem auto;
+}
+
+/* ========================
+   Headings & Layout
+=========================== */
+h1 {
+  text-align: center;
+  margin: 1rem 0;
+  font-size: 2rem;
+  color: #002b5b;
+}
+
+/* ========================
+   League Slider Improvements
+=========================== */
+#leagueDisplay::-webkit-scrollbar {
+  height: 8px;
+}
+
+#leagueDisplay::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+#leagueDisplay::-webkit-scrollbar-track {
+  background: transparent;
+}
+/* ========================
+   Player Search Section
+=========================== */
+.player-search-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
+#player-search {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 320px;
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#player-search:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+#player-search-btn {
+  padding: 0.6rem 1.2rem;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#player-search-btn:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Player Cards / Results */
+.player-results {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.player-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  padding: 1rem;
+  transition: transform 0.2s ease;
+}
+
+.player-card:hover {
+  transform: scale(1.03);
+}
+
+.player-card img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.player-card h3 {
+  font-size: 1.1rem;
+  color: #002b5b;
+  margin-bottom: 0.3rem;
+}
+
+.player-card p {
+  font-size: 0.9rem;
+  color: #555;
+}
+.close-player-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background-color: crimson;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 4px 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.close-player-btn:hover {
+  background-color: darkred;
+}
+
+.player-card {
+  position: relative;
+  background: #fff;
+  border-radius: 10px;
+  padding: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+
 
 /* ========================
    Footer Styles

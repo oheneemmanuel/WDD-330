@@ -1,91 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Soccer Scope | Home Page </title>
-    <meta name="description" content="A Home page for the Soccer Scope website that displays the necessary information that will be needed by the user.">
-    <meta name="author" content="Ohene Emmanuel Kwakye">
-    <meta property="og:title" content="Soccer Scope ">
-    <meta property="og:description" content="A home page for the soccer scope ">
-    <meta property="og:image" content="https://oheneemmanuel.github.io/wdd330/final-project/images/soccer.webp">
-    <meta property="og:url" content="https://oheneemmanuel.github.io/WDD330/final-project/index.html">
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Soccer Scope">
-    <meta property="og:locale" content="en_US">
-    <link rel="icon" href="icon1.ico">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="styles/soccer.css">
-    <link rel="stylesheet" href="">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth@0,99.7;1,99.7&display=swap" rel="stylesheet">
-    <script type="module" src="scripts/main.js"></script>
-    
+  <!-- Meta Basics -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Soccer Scope | Home Page</title>
+  <meta name="description" content="Home page for Soccer Scope, showing soccer leagues, teams, and player search." />
+  <meta name="author" content="Ohene Emmanuel Kwakye" />
+
+  <!-- Open Graph / Social Sharing -->
+  <meta property="og:title" content="Soccer Scope" />
+  <meta property="og:description" content="A home page for Soccer Scope" />
+  <meta property="og:image" content="https://oheneemmanuel.github.io/wdd330/final-project/images/soccer.webp" />
+  <meta property="og:url" content="https://oheneemmanuel.github.io/WDD330/final-project/index.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Soccer Scope" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="icon1.ico" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" />
+  <link rel="stylesheet" href="styles/soccer.css" />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth@0,99.7;1,99.7&display=swap" rel="stylesheet" />
+
+  <!-- JS -->
+  <script type="module" src="scripts/main.js"></script>
 </head>
+
 <body>
+
+  <!-- Header -->
     <header>
-        <img src="image/soccer.webp" alt="logo of soccer scope">
-        <span>SOCCER SCOPE</span>
-        <button id="open-menu" aria-label="open menu"></button>
-        
-     </header>
-    <nav id="menu-options">
-        <ul>
-            <li><a href="index.html">Home</a></li>
+      <img src="image/soccer.webp" alt="Soccer Scope logo" />
+      <span>SOCCER SCOPE</span>
+      <button id="open-menu" aria-label="Open menu"></button>
+    </header>
+
+
+
+  <!-- Navigation -->
+    <nav id="animate-me">
+        <ul id="menu-option">
+            <li class="active-item"><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="contact.html">Contact</a></li>
         </ul>
     </nav>
-   
-   
   
+
+  <!-- Main Content -->
     <main>
-        <div class="loader"></div>
-        <h1>TOP LEAGUES</h1>
-        <div id="leagueDisplay" class="slider-container">
-            
-            <p>Loading top leagues...</p>
+      <!-- Team Search -->
+      <section aria-labelledby="team-search-title">
+        <h2 id="team-search-title">Search for a Team</h2>
+        <div class="search-bar">
+          <input type="text" id="team-search" placeholder="Enter team name" />
+          <button id="search-btn">Search</button>
         </div>
-        <label for="league-select">Select a League:</label>    
+        <p>Click on the team logo for more info..</p>
+        <div id="search-results"></div>
+      </section>
+    
+      <!-- Player Search -->
+      <section aria-labelledby="player-search-title">
+        <h2 id="player-search-title">Search for a Player</h2>
+        <div class="search-bar">
+          <input type="text" id="player-search" placeholder="Enter player name" />
+          <button id="player-search-btn">Search</button>
+        </div>
+        <div id="player-results"></div>
+      </section>
+    
+      <!-- Leagues -->
+      <section aria-labelledby="top-leagues-title">
+        <div class="loader"></div>
+        <h1 id="top-leagues-title">Top Leagues</h1>
+        
+        <div id="leagueDisplay" class="slider-container">
+          <p>Loading top leagues...</p>
+        </div>
+      
+        <div class="search-bar">
+          <input type="text" id="league-search" placeholder="Search for a league" />
+          <button onclick="handleLeagueSearch()">Search</button>
+        </div>
+      
+        <label for="league-select">Select a League:</label>
         <select id="league-select">
-            <option value="39">Premier League (England)</option>
-            <option value="140">La Liga(Spain)</option>
-            <option value="135">Serie A(Italy)</option>
-            <option value="78">Bundesliga(Germany)</option>
-            <option value="61">Ligue 1(France)</option>
-            <option value="88">Eredivisie(Netherlands)</option>
-            <option value="62"> MLS(USA)</option>
-            <option value="2"> UEFA Champions League</option>
-            <option value="3"> UEFA Europa League</option>
-            <option value="4"> UEFA Conference League</option>
-            <option value="263"> Suadi Pro League</option>
+          <option value="4328">English Premier League</option>
+          <option value="4335">Spanish La Liga</option>
+          <option value="4332">Italian Serie A</option>
+          <option value="4331">German Bundesliga</option>
+          <option value="4334">French Ligue 1</option>
+          <option value="4346">MLS</option>
+          <option value="4480">UEFA Champions League</option>
         </select>
-
-        <section class="team-info">
-
-        </section>  
-        
-            
-       
-
-       
-        
+      </section>
+    
+      <!-- Team Info Display -->
+      <section class="team-info"></section>
     </main>
 
-    <footer>
-        <div>
-            <p>WDD330 final Project</p>
-            <p>Ohene Kwakye Emmanuel</p>
-        
-            <p>&copy;<span id="currentyear"></span> Ohene Emmanuel Kwakye, Ghana All rights reserved.</p>
-            <p id="LastModified"></p>
-        </div>
-    
-        
-    </footer>
-        
-    
+  <!-- Footer -->
+  <footer>
+    <p>WDD330 Final Project</p>
+    <p>Ohene Kwakye Emmanuel</p>
+    <p>&copy;<span id="currentyear"></span> Ohene Emmanuel Kwakye, Ghana. All rights reserved.</p>
+    <p id="LastModified"></p>
+  </footer>
 </body>
 </html>

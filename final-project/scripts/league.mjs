@@ -1,75 +1,84 @@
-//importing the slider to use for the leagues to show the top leagues
 import { initSlider } from "./slider.mjs";
-const url = "https://v3.football.api-sports.io/leagues";
 
-const options = {
-    method: "GET",
-    headers: {
-        "x-apisports-key": "745fa293efb28f91fd9d9fd7efcfc442"
-    }
+const url = "https://www.thesportsdb.com/api/v1/json/123/all_leagues.php";
+
+const topLeagues = [
+  "English Premier League",
+  "Spanish La Liga",
+  "Italian Serie A",
+  "German Bundesliga",
+  "French Ligue 1",
+  "UEFA Champions League",
+  "MLS",
+  "Portuguese Primeira Liga"
+];
+
+const leagueBadges = {
+  "English Premier League": "https://upload.wikimedia.org/wikipedia/en/f/f2/Premier_League_Logo.svg",
+  "English League Championship": "https://upload.wikimedia.org/wikipedia/en/1/15/EFL_Championship_Logo.svg",
+  "Scottish Premier League": "https://upload.wikimedia.org/wikipedia/en/8/8b/Scottish_Premiership_logo.svg",
+  "German Bundesliga": "https://upload.wikimedia.org/wikipedia/en/d/df/Bundesliga_logo_%282017%29.svg",
+  "Italian Serie A": "data:image/webp;base64,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",
+  "French Ligue 1": "data:image/webp;base64,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", 
+  "Spanish La Liga": "data:image/webp;base64,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",
+  "Greek Superleague Greece": "https://upload.wikimedia.org/wikipedia/en/2/2a/Super_League_Greece_logo.svg",
+  "Dutch Eredivisie": "https://upload.wikimedia.org/wikipedia/en/4/4e/Eredivisie_logo.svg"
 };
 
-//Getting the top Leagues to display them
-
-const topLeagues = [2, 3, 39, 61, 78, 135, 140, 253]
-
-
-
 export function displayLeagues(leaguesArray) {
-    const leagues = document.getElementById("leagueDisplay");
+  const leagues = document.getElementById("leagueDisplay");
+  const leagueSelect = document.getElementById("league-select");
+  leagues.innerHTML = "";
+  leagueSelect.innerHTML = "";
 
-    leagues.innerHTML = "";
+  leaguesArray.forEach(item => {
+    const div = document.createElement("div");
+    div.classList.add("slider-item");
 
-    leaguesArray.forEach(item => {
-        const div = document.createElement("div")
-        div.classList.add("slider-item");
+    const logo = document.createElement("img");
+    logo.src = leagueBadges[item.strLeague] || "images/default-league.png";
+    logo.alt = `${item.strLeague} logo`;
+    logo.classList.add("league-img");
+    logo.width = 1000;
+    logo.height = 800;
+    logo.loading = "lazy";
 
-        const logo = document.createElement("img");
-        logo.src = item.league.logo;
-        logo.alt = `${item.league.name} logo`;
-        logo.classList.add("league-img");
+    const leagueName = document.createElement("span");
+    leagueName.textContent = `${item.strLeague} - (${item.strSport})`;
 
-        logo.width = 900;
-        logo.height = 500;
-        logo.loading = "lazy";
+    div.appendChild(logo);
+    div.appendChild(leagueName);
+    leagues.appendChild(div);
 
-        const leagueName = document.createElement("span");
-        leagueName.textContent = `${item.league.name} - (${item.country.name})`;
-
-        div.appendChild(logo);
-        div.appendChild(leagueName);
-        leagues.appendChild(div);
-    });
-
+    const option = document.createElement("option");
+    option.value = item.idLeague;
+    option.textContent = item.strLeague;
+    leagueSelect.appendChild(option);
+  });
 }
+
 export async function getTopLeagues() {
-    const loader = document.querySelector(".loader");
-    loader.style.display = "block";
-    try {
-        const response = await fetch(url, options);
-        if (response.ok) {
-            const data = await response.json();
-            console.log(data);
-            const filtered = data.response.filter(item =>
-                topLeagues.includes(item.league.id)
-            );
-            displayLeagues(filtered);
-            initSlider();// this calls the slider to render 
-
-        } else {
-            throw new Error(await response.text());
-
-        }
-    } catch (error) {
-        console.error("Error fetching league data", error);
-        
-
-    } finally {
-        loader.style.display = "none";
-
+  const loader = document.querySelector(".loader");
+  loader.style.display = "block";
+  try {
+    const response = await fetch(url);
+    if (response.ok) {
+      const data = await response.json();
+      if (data && data.leagues) {
+        const filtered = data.leagues.filter(item =>
+          item.strSport === "Soccer" && topLeagues.includes(item.strLeague)
+        );
+        displayLeagues(filtered);
+        initSlider();
+        return filtered; // ✅ Return this
+      }
+    } else {
+      throw new Error(await response.text());
     }
+  } catch (error) {
+    console.error("Error fetching league data", error);
+    return [];
+  } finally {
+    loader.style.display = "none";
+  }
 }
-getTopLeagues();
-
-
-
