@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soccer Scope | Latest Football News</title>
+  <meta name="description" content="Latest football news and headlines from Soccer Scope using NewsAPI.">
+  <meta name="author" content="Ohene Emmanuel Kwakye">
+  
+  <meta property="og:title" content="Soccer Scope - Latest News">
+  <meta property="og:description" content="Stay updated with the latest football news from around the world.">
+  <meta property="og:image" content="https://oheneemmanuel.github.io/WDD-330/final-project/image/soccer.webp">
+  <meta property="og:url" content="https://oheneemmanuel.github.io/WDD-330/final-project/news.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Soccer Scope">
+  <meta property="og:locale" content="en_US">
+
+  <link rel="icon" href="icon1.ico">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="styles/news.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wdth@0,99.7;1,99.7&display=swap" rel="stylesheet">
+  <script src="scripts/news.js" defer></script>
+
+</head>
+
+<body>
+
+  <header>
+    <img src="image/soccer.webp" alt="Soccer Scope logo" />
+      <span> Latest News Around The World</span>
+      <button id="open-menu" aria-label="Open menu"></button>
+   
+  </header>
+  <nav id="animate-me">
+
+    <ul id="menu-option">
+      <li class="active-item"><a href="index.html">Home</a></li>
+      <li><a href="news.html">Latest News</a></li>
+      
+    </ul>
+  </nav>
+   <h1>Latest Football News</h1>
+
+  <main>
+    <div class="loader"></div>
+    <section class="news-container">
+      <!-- News cards will be inserted here by JS -->
+    </section>
+  </main>
+
+  <footer>
+    <p>WDD330 Final Project</p>
+    <p>&copy;<span id="currentyear"></span> Ohene Emmanuel Kwakye, Ghana. All rights reserved.</p>
+    <p id="LastModified"></p>
+  </footer>
+
+
+</body>
+</html>

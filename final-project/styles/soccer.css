@@ -26,7 +26,7 @@ header {
 header span {
   font-size: 2rem;
   font-weight: bold;
-  color: navy;
+  color: white;
   text-align: center;
 }
 
@@ -165,26 +165,26 @@ nav ul li.active-item a {
   }
 
   nav {
-    max-height: none;
-    background: none;
+      max-height: none;
+      
   }
 
   nav ul {
-    display: flex;
-    gap: 1rem;
+      display: flex;
+      gap: 1rem;
   }
 
   nav ul li {
-    border: none;
+      border: none;
   }
 
   nav ul li a {
-    padding: 0.5rem 0.8rem;
-    border-radius: 5px;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
   }
 
   nav ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
+      background-color: rgba(255, 255, 255, 0.2);
   }
 }
 
