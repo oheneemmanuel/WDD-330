@@ -2,7 +2,8 @@
 window.addEventListener("DOMContentLoaded", () => {
   // ✅ Footer year & last modified date
   document.getElementById("currentyear").textContent = new Date().getFullYear();
-  document.getElementById("LastModified").textContent = `Last Modified: ${new Date(document.lastModified)}`;
+  document.getElementById("LastModified").textContent =
+    `Last Modified: ${new Date(document.lastModified)}`;
 
   // ✅ Navigation menu toggle
   const openMenu = document.getElementById("open-menu");
@@ -17,7 +18,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const FOOTBALL_URL = `https://newsapi.org/v2/everything?q=football&language=en&sortBy=publishedAt&apiKey=${API_KEY}`;
   const WORLD_URL = `https://newsapi.org/v2/top-headlines?language=en&apiKey=${API_KEY}`;
 
-  // Fetch and display combined news
+  // Main news loader
   async function getCombinedNews() {
     const loader = document.querySelector(".loader");
     loader.style.display = "block";
@@ -28,9 +29,7 @@ window.addEventListener("DOMContentLoaded", () => {
         fetch(WORLD_URL)
       ]);
 
-      if (!footballRes.ok || !worldRes.ok) {
-        throw new Error(`HTTP error!`);
-      }
+      if (!footballRes.ok || !worldRes.ok) throw new Error("HTTP error!");
 
       const footballData = await footballRes.json();
       const worldData = await worldRes.json();
@@ -40,15 +39,27 @@ window.addEventListener("DOMContentLoaded", () => {
         .filter((article, index, self) =>
           index === self.findIndex(a => a.url === article.url)
         )
-        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt)); // newest first
+        .sort((a, b) => new Date(b.publishedAt) - new Date(a.publishedAt));
 
       displayNews(combined.slice(0, 12)); // Top 12 articles
     } catch (err) {
-      console.error("Error fetching news:", err);
-      document.querySelector(".news-container").innerHTML =
-        `<p class="error">Unable to load news at the moment.</p>`;
+      console.warn("NewsAPI failed, using fallback:", err);
+      await loadFallbackNews();
     } finally {
       loader.style.display = "none";
+    }
+  }
+
+  // Fallback loader
+  async function loadFallbackNews() {
+    try {
+      const fallbackRes = await fetch("data/news.json");
+      const fallbackData = await fallbackRes.json();
+      displayNews(fallbackData);
+    } catch (err) {
+      console.error("Fallback news failed:", err);
+      document.querySelector(".news-container").innerHTML =
+        `<p class="error">Unable to load any news right now.</p>`;
     }
   }
 
@@ -73,6 +84,6 @@ window.addEventListener("DOMContentLoaded", () => {
     `).join('');
   }
 
-  // Initial news fetch
+  // Initial load
   getCombinedNews();
 });
