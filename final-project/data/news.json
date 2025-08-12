@@ -1,20 +1,20 @@
 [
   {
-    "title": "Local Football Club Wins Championship",
-    "description": "The city is celebrating after their home team clinched the title in dramatic fashion.",
-    "url": "#",
-    "urlToImage": "images/news-placeholder.jpg"
+    "title": "Thomas Partey Signs with Villarreal on Free Transfer",
+    "description": "Villarreal have officially signed Ghanaian midfielder Thomas Partey on a one-year deal following the expiration of his Arsenal contract. The club emphasized the presumption of innocence amid ongoing legal proceedings.",
+    "url": "REUTERS_VILLARREAL_PIRTEY_ARTICLE_URL",
+    "urlToImage": "PATH_TO_PARTEY_IMAGE"
   },
   {
-    "title": "Star Player Signs New Deal",
-    "description": "The player extends their contract for another 3 years, delighting fans worldwide.",
-    "url": "#",
-    "urlToImage": "images/news-placeholder.jpg"
+    "title": "Mohammed Kudus Completes Move to Tottenham Hotspur",
+    "description": "Tottenham Hotspur have secured Ghanaian midfielder Mohammed Kudus from West Ham United for approximately £55 million on a long-term contract.",
+    "url": "REUTERS_ SPURS_KUDUS_ARTICLE_URL",
+    "urlToImage": "PATH_TO_KUDUS_IMAGE"
   },
   {
-    "title": "Youth Academy Produces New Talent",
-    "description": "Three young players are set to debut in the senior squad next season.",
-    "url": "#",
-    "urlToImage": "images/news-placeholder.jpg"
+    "title": "Ghana Appoints Winfried Schäfer as Technical Adviser and Director of Football",
+    "description": "Ghana Football Association has appointed veteran coach Winfried Schäfer as Technical Adviser and Director of Football to oversee long-term development and mentor the national team setup.",
+    "url": "REUTERS_SCHAEFER_APPOINTMENT_URL",
+    "urlToImage": "PATH_TO_SCHAEFER_IMAGE"
   }
 ]
