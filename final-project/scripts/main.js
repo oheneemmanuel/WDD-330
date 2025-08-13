@@ -2,6 +2,7 @@ import { getTopLeagues, displayLeagues } from "./league.mjs";
 import { getTeamsByLeague } from "./teams.mjs";
 import { handleSearch } from "./search.mjs";
 import { handlePlayerSearch } from "./players.mjs";
+import { sidebar, showVisitMessage } from "./localStorage.mjs";
 // Main initialization
 window.addEventListener("DOMContentLoaded", async () => {
   // ✅ Set footer year and last modified date
